@@ -21,9 +21,12 @@ func main() {
 	r.Use(middleware.Recoverer)
 
 	r.Route("/api/v1", func(r chi.Router) {
+		r.Get("/", func(w http.ResponseWriter, r *http.Request) {
+			w.Write([]byte("Hei buddy! Just chekin'"))
+		})
 		r.Mount("/users", user.UserRouter(db))
 		r.Mount("/books", book.BookRouter(db))
-		r.Mount("/review", review.ReviewRouter(db))
+		r.Mount("/", review.ReviewRouter(db))
 	})
 
 	log.Fatal(http.ListenAndServe(":8080", r))
