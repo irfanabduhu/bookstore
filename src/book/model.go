@@ -8,6 +8,6 @@ type Book struct {
 	Author      string    `json:"author,omitempty"`
 	Description string    `json:"description,omitempty"`
 	Price       *float64  `json:"price,omitempty"`
-	CreatedAt   time.Time `json:"created_at,omitempty"`
-	UpdatedAt   time.Time `json:"updated_at,omitempty"`
+	CreatedAt   time.Time `json:"-"`
+	UpdatedAt   time.Time `json:"-"`
 }

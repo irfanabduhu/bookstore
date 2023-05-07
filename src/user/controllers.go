@@ -87,7 +87,7 @@ func SignInHandler(db *sql.DB) http.HandlerFunc {
 
 		// Create a JWT token
 		token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-			"id":   user.ID,
+			"username":   user.Username,
 			"role": user.Role,
 			"exp":  time.Now().Add(time.Hour * 24).Unix(),
 		})
@@ -245,6 +245,31 @@ func UpdateUserPlanHandler(db *sql.DB) http.HandlerFunc {
 		}
 
 		w.WriteHeader(http.StatusOK)
+	}
+}
+
+func DeleteUserHandler(db *sql.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		username := chi.URLParam(r, "username")
+		query := "DELETE FROM users WHERE username=$1"
+		result, err := db.Exec(query, username)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		// Check if a row was affected by the delete operation
+		rowsAffected, err := result.RowsAffected()
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		if rowsAffected == 0 {
+			http.Error(w, "User not found", http.StatusNotFound)
+			return
+		}
+
+		w.WriteHeader(http.StatusNoContent)
 	}
 }
 

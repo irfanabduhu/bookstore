@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/go-chi/chi"
 	"github.com/golang-jwt/jwt"
 )
 
@@ -44,6 +45,23 @@ func Auth(next http.Handler) http.Handler {
 			http.Error(w, "Invalid token claims", http.StatusUnauthorized)
 			return
 		}
+	})
+}
+
+func CurrentUserOnly(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		claims, ok := r.Context().Value("claims").(jwt.MapClaims)
+		if !ok {
+			http.Error(w, "Missing JWT claims", http.StatusUnauthorized)
+			return
+		}
+
+		username, ok := claims["username"].(string)
+		if !ok || username != chi.URLParam(r, "username") {
+			http.Error(w, "unauthorized access", http.StatusForbidden)
+			return
+		}
+		next.ServeHTTP(w, r)
 	})
 }
 

@@ -11,7 +11,7 @@ import (
 
 func ListBooksHandler(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		rows, err := db.Query("SELECT id, title, author, description, price FROM books")
+		rows, err := db.Query("SELECT id, title, author, price FROM books")
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -21,7 +21,7 @@ func ListBooksHandler(db *sql.DB) http.HandlerFunc {
 		books := []Book{}
 		for rows.Next() {
 			book := Book{}
-			err := rows.Scan(&book.ID, &book.Title, &book.Author, &book.Description, &book.Price)
+			err := rows.Scan(&book.ID, &book.Title, &book.Author, &book.Price)
 			if err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
 				return

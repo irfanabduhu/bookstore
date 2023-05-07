@@ -1,0 +1,128 @@
+### Root of API
+GET http://localhost:8080/api/v1
+
+### Login as admin
+POST http://localhost:8080/api/v1/users/signin
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "abracadabra"
+}
+
+### Create a new book
+POST http://localhost:8080/api/v1/books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1Mzc5NDcsImlkIjoxLCJyb2xlIjoiYWRtaW4ifQ.dgjTY6LSaTBXisKkBvq_IIL2egbJsmCYK-_QZbqWgJE
+
+{
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "description": "Compassionate, dramatic, and deeply moving, \"To Kill A Mockingbird\" takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature.",
+    "price": 0
+}
+
+### Create book: 1984
+POST http://localhost:8080/api/v1/books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1Mzc5NDcsImlkIjoxLCJyb2xlIjoiYWRtaW4ifQ.dgjTY6LSaTBXisKkBvq_IIL2egbJsmCYK-_QZbqWgJE
+
+{
+    "title": "1984",
+    "author": "George Orwell",
+    "description": "To Winston Smith, a young man who works in the Ministry of Truth (Minitru for short), come two people who transform this life completely. One is Julia, whom he meets after she hands him a slip reading, \"I love you.\" The other is O'Brien, who tells him, \"We shall meet in the place where there is no darkness.\" The way in which Winston is betrayed by the one and, against his own desires and instincts, ultimately betrays the other, makes a story of mounting drama and suspense.",
+    "price": 2.1
+}
+
+### Create book: The Adventures of Huckleberry Finn
+POST http://localhost:8080/api/v1/books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1Mzc5NDcsImlkIjoxLCJyb2xlIjoiYWRtaW4ifQ.dgjTY6LSaTBXisKkBvq_IIL2egbJsmCYK-_QZbqWgJE
+
+{
+    "title": "The Adventures of Huckleberry Finn",
+    "author": "Mark Twain",
+    "description": "A nineteenth-century boy from a Mississippi River town recounts his adventures as he travels down the river with a runaway slave, encountering a family involved in a feud, two scoundrels pretending to be royalty, and Tom Sawyer's aunt who mistakes him for Tom.",
+    "price": 0
+}
+
+### Create book: Les Misérables
+POST http://localhost:8080/api/v1/books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1Mzc5NDcsImlkIjoxLCJyb2xlIjoiYWRtaW4ifQ.dgjTY6LSaTBXisKkBvq_IIL2egbJsmCYK-_QZbqWgJE
+
+{
+    "title": "Les Misérables",
+    "author": "Victor Hugo",
+    "description": "Victor Hugo's tale of injustice, heroism and love follows the fortunes of Jean Valjean, an escaped convict determined to put his criminal past behind him.",
+    "price": 0
+}
+### GET all books
+GET http://localhost:8080/api/v1/books
+
+### GET details of a book
+GET http://localhost:8080/api/v1/books/4
+
+### Update a book
+PUT http://localhost:8080/api/v1/books/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1Mzc5NDcsImlkIjoxLCJyb2xlIjoiYWRtaW4ifQ.dgjTY6LSaTBXisKkBvq_IIL2egbJsmCYK-_QZbqWgJE
+
+{
+    "price": 1.30
+}
+
+### Delete a book
+DELETE  http://localhost:8080/api/v1/books/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1Mzc5NDcsImlkIjoxLCJyb2xlIjoiYWRtaW4ifQ.dgjTY6LSaTBXisKkBvq_IIL2egbJsmCYK-_QZbqWgJE
+
+
+# USER ROUTES
+### Sign up
+POST http://localhost:8080/api/v1/users/signup
+Content-Type: application/json
+
+{
+    "name": "Irfan",
+    "username": "irfan",
+    "email": "irfan@example.com",
+    "password": "123456",
+    "plan": "premium"
+}
+
+### Sign in
+POST http://localhost:8080/api/v1/users/signin
+Content-Type: application/json
+
+{
+    "username": "irfan",
+    "password": "abracadabra"
+}
+
+### GET user details
+GET http://localhost:8080/api/v1/users/irfan
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1NDY1NTYsInJvbGUiOiJ1c2VyIiwidXNlcm5hbWUiOiJpcmZhbiJ9.aB-YuGH44B42trPPz-HeuG1vL2hxM7ukVnzdoxXNmdw
+
+### Update user details
+PUT http://localhost:8080/api/v1/users/irfan
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1NDY1NTYsInJvbGUiOiJ1c2VyIiwidXNlcm5hbWUiOiJpcmZhbiJ9.aB-YuGH44B42trPPz-HeuG1vL2hxM7ukVnzdoxXNmdw
+
+{
+    "name": "Irfanul Hoque",
+    "password": "abracadabra",
+    "plan": "basic"
+}
+
+### Update user plans specifically
+PUT http://localhost:8080/api/v1/users/irfan
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1NDY1NTYsInJvbGUiOiJ1c2VyIiwidXNlcm5hbWUiOiJpcmZhbiJ9.aB-YuGH44B42trPPz-HeuG1vL2hxM7ukVnzdoxXNmdw
+
+{
+    "plan": "premium"
+}
+
+### Delete a user
+DELETE  http://localhost:8080/api/v1/users/irfan
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1NDY1NTYsInJvbGUiOiJ1c2VyIiwidXNlcm5hbWUiOiJpcmZhbiJ9.aB-YuGH44B42trPPz-HeuG1vL2hxM7ukVnzdoxXNmdw

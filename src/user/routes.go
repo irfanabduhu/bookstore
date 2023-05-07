@@ -14,10 +14,12 @@ func UserRouter(db *sql.DB) chi.Router {
 	r.Post("/signin", SignInHandler(db))
 	r.Route("/{username}", func(r chi.Router) {
 		r.Use(auth.Auth)
+		r.Use(auth.CurrentUserOnly)
 		
 		r.Get("/", GetUserHandler(db))
 		r.Put("/", UpdateUserHandler(db))
 		r.Put("/plan", UpdateUserPlanHandler(db))
+		r.Delete("/", DeleteUserHandler(db))
 		r.Post("/rent", RentBookHandler(db))
 		r.Post("/buy", BuyBookHandler(db))
 	})
