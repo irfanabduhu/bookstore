@@ -274,13 +274,3 @@ func DeleteUserHandler(db *sql.DB) http.HandlerFunc {
 		w.WriteHeader(http.StatusNoContent)
 	}
 }
-
-func RentBookHandler(db *sql.DB) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-	}
-}
-
-func BuyBookHandler(db *sql.DB) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-	}
-}

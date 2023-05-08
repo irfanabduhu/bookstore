@@ -20,8 +20,6 @@ func UserRouter(db *sql.DB) chi.Router {
 		r.Put("/", UpdateUserHandler(db))
 		r.Put("/plan", UpdateUserPlanHandler(db))
 		r.Delete("/", DeleteUserHandler(db))
-		r.Post("/rent", RentBookHandler(db))
-		r.Post("/buy", BuyBookHandler(db))
 	})
 
 	return r
