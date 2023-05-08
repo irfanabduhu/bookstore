@@ -11,7 +11,9 @@ Run the [queries](/src/config/model.sql) to setup the database.
 
 # Start the development server
 ```
-go run src/main.go
+cd src
+go mod tidy
+go run main.go
 ```
 
 Use the [Client](/src/client.http) to interact with the server.
