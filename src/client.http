@@ -10,6 +10,7 @@ Content-Type: application/json
     "password": "abracadabra"
 }
 
+# BOOK ROUTES
 ### Create a new book
 POST http://localhost:8080/api/v1/books
 Content-Type: application/json
@@ -57,6 +58,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1Mzc5N
     "description": "Victor Hugo's tale of injustice, heroism and love follows the fortunes of Jean Valjean, an escaped convict determined to put his criminal past behind him.",
     "price": 0
 }
+
 ### GET all books
 GET http://localhost:8080/api/v1/books
 
@@ -127,6 +129,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2MjMyN
 DELETE  http://localhost:8080/api/v1/users/irfan
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2MjMyNTksInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6NCwidXNlcm5hbWUiOiJpcmZhbiJ9.9WI-B_7RLnR2Pp86VgvWt3tTduLgxcBudhI-b5-_oJY
 
+# REVIEW ROUTES
 ### GET all reviews for a book
 GET http://localhost:8080/api/v1/reviews/books/1
 
