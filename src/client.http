@@ -64,7 +64,7 @@ GET http://localhost:8080/api/v1/books
 GET http://localhost:8080/api/v1/books/4
 
 ### Update a book
-PUT http://localhost:8080/api/v1/books/1
+PUT http://localhost:8080/api/v1/books/4
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1Mzc5NDcsImlkIjoxLCJyb2xlIjoiYWRtaW4ifQ.dgjTY6LSaTBXisKkBvq_IIL2egbJsmCYK-_QZbqWgJE
 
@@ -101,12 +101,12 @@ Content-Type: application/json
 
 ### GET user details
 GET http://localhost:8080/api/v1/users/irfan
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1NDY1NTYsInJvbGUiOiJ1c2VyIiwidXNlcm5hbWUiOiJpcmZhbiJ9.aB-YuGH44B42trPPz-HeuG1vL2hxM7ukVnzdoxXNmdw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2MjMyNTksInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6NCwidXNlcm5hbWUiOiJpcmZhbiJ9.9WI-B_7RLnR2Pp86VgvWt3tTduLgxcBudhI-b5-_oJY
 
 ### Update user details
 PUT http://localhost:8080/api/v1/users/irfan
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1NDY1NTYsInJvbGUiOiJ1c2VyIiwidXNlcm5hbWUiOiJpcmZhbiJ9.aB-YuGH44B42trPPz-HeuG1vL2hxM7ukVnzdoxXNmdw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2MjMyNTksInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6NCwidXNlcm5hbWUiOiJpcmZhbiJ9.9WI-B_7RLnR2Pp86VgvWt3tTduLgxcBudhI-b5-_oJY
 
 {
     "name": "Irfanul Hoque",
@@ -117,7 +117,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1NDY1N
 ### Update user plans specifically
 PUT http://localhost:8080/api/v1/users/irfan
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1NDY1NTYsInJvbGUiOiJ1c2VyIiwidXNlcm5hbWUiOiJpcmZhbiJ9.aB-YuGH44B42trPPz-HeuG1vL2hxM7ukVnzdoxXNmdw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2MjMyNTksInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6NCwidXNlcm5hbWUiOiJpcmZhbiJ9.9WI-B_7RLnR2Pp86VgvWt3tTduLgxcBudhI-b5-_oJY
 
 {
     "plan": "premium"
@@ -125,4 +125,36 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1NDY1N
 
 ### Delete a user
 DELETE  http://localhost:8080/api/v1/users/irfan
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1NDY1NTYsInJvbGUiOiJ1c2VyIiwidXNlcm5hbWUiOiJpcmZhbiJ9.aB-YuGH44B42trPPz-HeuG1vL2hxM7ukVnzdoxXNmdw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2MjMyNTksInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6NCwidXNlcm5hbWUiOiJpcmZhbiJ9.9WI-B_7RLnR2Pp86VgvWt3tTduLgxcBudhI-b5-_oJY
+
+### GET all reviews for a book
+GET http://localhost:8080/api/v1/reviews/books/1
+
+### GET a specific review
+GET http://localhost:8080/api/v1/reviews/28
+
+### Create a review
+POST http://localhost:8080/api/v1/reviews/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2MjUyOTEsInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6IjQiLCJ1c2VybmFtZSI6ImlyZmFuIn0.zE2JZeEqP2kcsFsPnjFpQWz9Kwi-CQhYObnr9jVx2Xo
+
+{
+    "book_id": 1,
+    "rating": 3,
+    "comment": "Awesome book"
+}
+
+### Update a review
+PUT http://localhost:8080/api/v1/reviews/28
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2MjUyOTEsInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6IjQiLCJ1c2VybmFtZSI6ImlyZmFuIn0.zE2JZeEqP2kcsFsPnjFpQWz9Kwi-CQhYObnr9jVx2Xo
+
+{
+    "rating": 5,
+    "comment": "Amazing book"
+}
+
+
+### Delete a review
+DELETE  http://localhost:8080/api/v1/reviews/28
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2MjUyOTEsInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6IjQiLCJ1c2VybmFtZSI6ImlyZmFuIn0.zE2JZeEqP2kcsFsPnjFpQWz9Kwi-CQhYObnr9jVx2Xo

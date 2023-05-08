@@ -8,6 +8,6 @@ type Review struct {
 	BookID    int       `json:"book_id,omitempty"`
 	Rating    int       `json:"rating,omitempty"`
 	Comment   string    `json:"comment,omitempty"`
-	CreatedAt time.Time `json:"created_at,omitempty"`
-	UpdatedAt time.Time `json:"updated_at,omitempty"`
+	CreatedAt time.Time `json:"-"`
+	UpdatedAt time.Time `json:"-"`
 }

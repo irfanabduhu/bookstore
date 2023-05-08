@@ -11,7 +11,7 @@ import (
 
 func ListBooksHandler(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		rows, err := db.Query("SELECT id, title, author, price FROM books")
+		rows, err := db.Query("SELECT id, title, author, price FROM books ORDER BY id")
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -98,15 +98,15 @@ func UpdateBookHandler(db *sql.DB) http.HandlerFunc {
 		query := "SELECT id, title, author, description, price, updated_at FROM books where id=$1"
 		row := db.QueryRow(query, bookID)
 		err = row.Scan(&existingBook.ID, &existingBook.Title, &existingBook.Author, &existingBook.Description, &existingBook.Price, &existingBook.UpdatedAt)
-		if err != nil {
-			if err == sql.ErrNoRows {
-				http.Error(w, "Book not found", http.StatusNotFound)
-			} else {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-			}
+		if err == sql.ErrNoRows {
+			http.Error(w, "Book not found", http.StatusNotFound)
 			return
 		}
-		
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
 		if requestBody.Title != "" {
 			existingBook.Title = requestBody.Title
 		}
@@ -122,23 +122,12 @@ func UpdateBookHandler(db *sql.DB) http.HandlerFunc {
 
 		// Update the book in the database
 		query = "UPDATE books SET title=$1, author=$2, description=$3, price=$4, updated_at=$5 WHERE id=$6"
-		result, err := db.Exec(query, existingBook.Title, existingBook.Author, existingBook.Description, *existingBook.Price, time.Now(), bookID)
+		_, err = db.Exec(query, existingBook.Title, existingBook.Author, existingBook.Description, *existingBook.Price, time.Now(), bookID)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-
-		// Check if the book was found and updated
-		rowsUpdated, err := result.RowsAffected()
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		if rowsUpdated == 0 {
-			http.Error(w, "Book not found", http.StatusNotFound)
-			return
-		}
-
+		
 		// Return the updated book as JSON
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(existingBook)

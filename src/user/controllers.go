@@ -3,6 +3,7 @@ package user
 import (
 	"database/sql"
 	"encoding/json"
+	"fmt"
 	"irfanabduhu/bookstore/auth"
 	"net/http"
 	"time"
@@ -87,9 +88,10 @@ func SignInHandler(db *sql.DB) http.HandlerFunc {
 
 		// Create a JWT token
 		token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-			"username":   user.Username,
-			"role": user.Role,
-			"exp":  time.Now().Add(time.Hour * 24).Unix(),
+			"user_id":   fmt.Sprint(user.ID),
+			"username": user.Username,
+			"role":     user.Role,
+			"exp":      time.Now().Add(time.Hour * 24).Unix(),
 		})
 
 		// Sign the token with a secret key

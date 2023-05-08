@@ -26,7 +26,7 @@ func main() {
 		})
 		r.Mount("/users", user.UserRouter(db))
 		r.Mount("/books", book.BookRouter(db))
-		r.Mount("/", review.ReviewRouter(db))
+		r.Mount("/reviews", review.ReviewRouter(db))
 	})
 
 	log.Fatal(http.ListenAndServe(":8080", r))
