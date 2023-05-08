@@ -7,7 +7,11 @@ docker run -d \
 -p 5432:5432 postgres
 ```
 
+Run the [queries](/src/config/model.sql) to setup the database.
+
 # Start the development server
 ```
 go run src/main.go
 ```
+
+Use the [Client](/src/client.http) to interact with the server.
