@@ -74,7 +74,6 @@ func AdminOnly(next http.Handler) http.Handler {
 		}
 
 		role, ok := claims["role"].(string)
-		fmt.Println("Role: ", claims)
 		if !ok || role != "admin" {
 			http.Error(w, "Admins only", http.StatusForbidden)
 			return

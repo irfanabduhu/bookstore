@@ -3,7 +3,6 @@ package review
 import (
 	"database/sql"
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"strconv"
 
@@ -84,7 +83,6 @@ func CreateReviewHandler(db *sql.DB) http.HandlerFunc {
 		}
 		review.UserID = userID
 
-		fmt.Println("Review: ", review, "user id: ", userID)
 		query := "INSERT INTO reviews (user_id, book_id, rating, comment) VALUES ($1, $2, $3, $4) RETURNING id"
 		row := db.QueryRow(query, review.UserID, review.BookID, review.Rating, review.Comment)
 		err = row.Scan(&review.ID)
@@ -92,6 +90,8 @@ func CreateReviewHandler(db *sql.DB) http.HandlerFunc {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
+
+		w.WriteHeader(http.StatusCreated)
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(review)
 	}

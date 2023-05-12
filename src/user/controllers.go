@@ -51,6 +51,7 @@ func SignUpHandler(db *sql.DB) http.HandlerFunc {
 		// Hide password from response:
 		user.Password = ""
 		w.WriteHeader(http.StatusCreated)
+		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(user)
 	}
 }
@@ -71,7 +72,7 @@ func SignInHandler(db *sql.DB) http.HandlerFunc {
 		err = row.Scan(&user.ID, &user.Username, &user.Password, &user.Role)
 
 		if err == sql.ErrNoRows {
-			http.Error(w, "Invalid credentials", http.StatusUnauthorized)
+			http.Error(w, "No such user exists", http.StatusUnauthorized)
 			return
 		}
 		if err != nil {
