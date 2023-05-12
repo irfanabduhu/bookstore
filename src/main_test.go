@@ -7,7 +7,7 @@ import (
 )
 
 func TestMain(m *testing.M) {
-	utils.Init()
+	utils.InitDB()
 	code := m.Run()
 	utils.TearDown()
     os.Exit(code)

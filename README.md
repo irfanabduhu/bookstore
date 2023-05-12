@@ -15,8 +15,6 @@ docker run -d \
 -p 5433:5432 postgres
 ```
 
-Run the [queries](/src/config/model.sql) to setup the database.
-
 # Run Tests
 ```
 cd src

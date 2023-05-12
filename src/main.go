@@ -5,6 +5,7 @@ import (
 	"irfanabduhu/bookstore/config"
 	"irfanabduhu/bookstore/review"
 	"irfanabduhu/bookstore/user"
+	"irfanabduhu/bookstore/utils"
 	"log"
 	"net/http"
 
@@ -19,5 +20,6 @@ func main() {
 		r.Mount("/books", book.BookRouter(s.Databse))
 		r.Mount("/reviews", review.ReviewRouter(s.Databse))
 	})
+	utils.InitDB()
 	log.Fatal(http.ListenAndServe(":8080", s.Router))
 }

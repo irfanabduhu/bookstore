@@ -1,6 +1,3 @@
-### Root of API
-GET http://localhost:8080/api/v1
-
 ### Login as admin
 POST http://localhost:8080/api/v1/users/signin
 Content-Type: application/json
@@ -14,19 +11,19 @@ Content-Type: application/json
 ### Create a new book
 POST http://localhost:8080/api/v1/books
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2NTk1MzksInJvbGUiOiJhZG1pbiIsInVzZXJfaWQiOiIxIiwidXNlcm5hbWUiOiJhZG1pbiJ9.TMX9K_cnekWHDaHlEWuzESVUUW0wDA3X4_I9318gOuk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM5MTg3NDgsInJvbGUiOiJhZG1pbiIsInVzZXJfaWQiOiIxIiwidXNlcm5hbWUiOiJhZG1pbiJ9.Xq1Z5x6X5_jtzUblGfUfKU7jPmpwa4w5ScKX-wBmBaQ
 
 {
     "title": "To Kill a Mockingbird",
     "author": "Harper Lee",
     "description": "Compassionate, dramatic, and deeply moving, \"To Kill A Mockingbird\" takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature.",
-    "price": 0
+    "price": 1
 }
 
 ### Create book: 1984
 POST http://localhost:8080/api/v1/books
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2NTk1MzksInJvbGUiOiJhZG1pbiIsInVzZXJfaWQiOiIxIiwidXNlcm5hbWUiOiJhZG1pbiJ9.TMX9K_cnekWHDaHlEWuzESVUUW0wDA3X4_I9318gOuk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM5MTg3NDgsInJvbGUiOiJhZG1pbiIsInVzZXJfaWQiOiIxIiwidXNlcm5hbWUiOiJhZG1pbiJ9.Xq1Z5x6X5_jtzUblGfUfKU7jPmpwa4w5ScKX-wBmBaQ
 
 {
     "title": "1984",
@@ -38,7 +35,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2NTk1M
 ### Create book: The Adventures of Huckleberry Finn
 POST http://localhost:8080/api/v1/books
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2NTk1MzksInJvbGUiOiJhZG1pbiIsInVzZXJfaWQiOiIxIiwidXNlcm5hbWUiOiJhZG1pbiJ9.TMX9K_cnekWHDaHlEWuzESVUUW0wDA3X4_I9318gOuk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM5MTg3NDgsInJvbGUiOiJhZG1pbiIsInVzZXJfaWQiOiIxIiwidXNlcm5hbWUiOiJhZG1pbiJ9.Xq1Z5x6X5_jtzUblGfUfKU7jPmpwa4w5ScKX-wBmBaQ
 
 {
     "title": "The Adventures of Huckleberry Finn",
@@ -50,7 +47,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2NTk1M
 ### Create book: Les Misérables
 POST http://localhost:8080/api/v1/books
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2NTk1MzksInJvbGUiOiJhZG1pbiIsInVzZXJfaWQiOiIxIiwidXNlcm5hbWUiOiJhZG1pbiJ9.TMX9K_cnekWHDaHlEWuzESVUUW0wDA3X4_I9318gOuk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM5MTg3NDgsInJvbGUiOiJhZG1pbiIsInVzZXJfaWQiOiIxIiwidXNlcm5hbWUiOiJhZG1pbiJ9.Xq1Z5x6X5_jtzUblGfUfKU7jPmpwa4w5ScKX-wBmBaQ
 
 {
     "title": "Les Misérables",
@@ -68,15 +65,15 @@ GET http://localhost:8080/api/v1/books/4
 ### Update a book
 PUT http://localhost:8080/api/v1/books/4
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2NTk1MzksInJvbGUiOiJhZG1pbiIsInVzZXJfaWQiOiIxIiwidXNlcm5hbWUiOiJhZG1pbiJ9.TMX9K_cnekWHDaHlEWuzESVUUW0wDA3X4_I9318gOuk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM5MTg3NDgsInJvbGUiOiJhZG1pbiIsInVzZXJfaWQiOiIxIiwidXNlcm5hbWUiOiJhZG1pbiJ9.Xq1Z5x6X5_jtzUblGfUfKU7jPmpwa4w5ScKX-wBmBaQ
 
 {
-    "price": 1.30
+    "price": 5.30
 }
 
 ### Delete a book
-DELETE  http://localhost:8080/api/v1/books/3
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2NTk1MzksInJvbGUiOiJhZG1pbiIsInVzZXJfaWQiOiIxIiwidXNlcm5hbWUiOiJhZG1pbiJ9.TMX9K_cnekWHDaHlEWuzESVUUW0wDA3X4_I9318gOuk
+DELETE  http://localhost:8080/api/v1/books/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM5MTg3NDgsInJvbGUiOiJhZG1pbiIsInVzZXJfaWQiOiIxIiwidXNlcm5hbWUiOiJhZG1pbiJ9.Xq1Z5x6X5_jtzUblGfUfKU7jPmpwa4w5ScKX-wBmBaQ
 
 
 # USER ROUTES
@@ -85,9 +82,9 @@ POST http://localhost:8080/api/v1/users/signup
 Content-Type: application/json
 
 {
-    "name": "Irfan",
-    "username": "irfan",
-    "email": "irfan@example.com",
+    "name": "Rashed",
+    "username": "rashed",
+    "email": "rashed@example.com",
     "password": "123456",
     "plan": "premium"
 }
@@ -97,41 +94,41 @@ POST http://localhost:8080/api/v1/users/signin
 Content-Type: application/json
 
 {
-    "username": "irfan",
+    "username": "miad",
     "password": "123456"
 }
 
 ### GET user details
-GET http://localhost:8080/api/v1/users/irfan
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2NTk2MDIsInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6IjIiLCJ1c2VybmFtZSI6ImlyZmFuIn0.qCMrWzdqi6UoCjtReUyvKaAvE9Ky-XydylhvIiz6gzA
+GET http://localhost:8080/api/v1/users/miad
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM5MTg4MjgsInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6IjIiLCJ1c2VybmFtZSI6Im1pYWQifQ.Jq0myo49_u6afg1Y1AfY-Nq6ifJwYNQ6XkcMykCSCEk
 
 ### Update user details
-PUT http://localhost:8080/api/v1/users/irfan
+PUT http://localhost:8080/api/v1/users/miad
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2NTk2MDIsInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6IjIiLCJ1c2VybmFtZSI6ImlyZmFuIn0.qCMrWzdqi6UoCjtReUyvKaAvE9Ky-XydylhvIiz6gzA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM5MTg4MjgsInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6IjIiLCJ1c2VybmFtZSI6Im1pYWQifQ.Jq0myo49_u6afg1Y1AfY-Nq6ifJwYNQ6XkcMykCSCEk
 
 {
-    "name": "Irfanul Hoque",
+    "name": "Miad Hasan",
     "password": "abracadabra",
     "plan": "basic"
 }
 
 ### Update user plans specifically
-PUT http://localhost:8080/api/v1/users/irfan
+PUT http://localhost:8080/api/v1/users/miad/plan
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2NTk2MDIsInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6IjIiLCJ1c2VybmFtZSI6ImlyZmFuIn0.qCMrWzdqi6UoCjtReUyvKaAvE9Ky-XydylhvIiz6gzA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM5MTg4MjgsInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6IjIiLCJ1c2VybmFtZSI6Im1pYWQifQ.Jq0myo49_u6afg1Y1AfY-Nq6ifJwYNQ6XkcMykCSCEk
 
 {
     "plan": "premium"
 }
 
 ### Delete a user
-DELETE  http://localhost:8080/api/v1/users/irfan
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2NTk2MDIsInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6IjIiLCJ1c2VybmFtZSI6ImlyZmFuIn0.qCMrWzdqi6UoCjtReUyvKaAvE9Ky-XydylhvIiz6gzA
+DELETE  http://localhost:8080/api/v1/users/miad
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM3MzM4MDAsInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6IjQiLCJ1c2VybmFtZSI6Im1pYWQifQ.i4hKM4pN_IYolSkvXd3HLM8FieHfzZLzOc1jkVXgCOQ
 
 # REVIEW ROUTES
 ### GET all reviews for a book
-GET http://localhost:8080/api/v1/reviews/books/1
+GET http://localhost:8080/api/v1/reviews/books/2
 
 ### GET a specific review
 GET http://localhost:8080/api/v1/reviews/1
@@ -139,10 +136,10 @@ GET http://localhost:8080/api/v1/reviews/1
 ### Create a review
 POST http://localhost:8080/api/v1/reviews/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2NTk2MDIsInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6IjIiLCJ1c2VybmFtZSI6ImlyZmFuIn0.qCMrWzdqi6UoCjtReUyvKaAvE9Ky-XydylhvIiz6gzA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM5MTg4MjgsInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6IjIiLCJ1c2VybmFtZSI6Im1pYWQifQ.Jq0myo49_u6afg1Y1AfY-Nq6ifJwYNQ6XkcMykCSCEk
 
 {
-    "book_id": 1,
+    "book_id": 2,
     "rating": 3,
     "comment": "Awesome book"
 }
@@ -150,7 +147,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2NTk2M
 ### Update a review
 PUT http://localhost:8080/api/v1/reviews/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM2NTk2MDIsInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6IjIiLCJ1c2VybmFtZSI6ImlyZmFuIn0.qCMrWzdqi6UoCjtReUyvKaAvE9Ky-XydylhvIiz6gzA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM5MTg4MjgsInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6IjIiLCJ1c2VybmFtZSI6Im1pYWQifQ.Jq0myo49_u6afg1Y1AfY-Nq6ifJwYNQ6XkcMykCSCEk
 
 {
     "rating": 5,

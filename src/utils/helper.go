@@ -16,9 +16,9 @@ import (
 	"github.com/golang-jwt/jwt"
 )
 
-func Init() {
+func InitDB() {
 	var queries []string = []string {
-		`CREATE TABLE users (
+		`CREATE TABLE IF NOT EXISTS users (
 			id SERIAL PRIMARY KEY,
 			name TEXT NOT NULL,
 			username VARCHAR(255) UNIQUE NOT NULL,
@@ -37,7 +37,7 @@ func Init() {
 			'$2a$10$EOsoyng3jonP9XHiZ3uw5egQAO7Ae0v9Ty75mA0tCU6Z8T9Xf2nj6', -- hash for 'abracadabra' with defaultCost
 			'admin'
 		);`,
-		`CREATE TABLE books (
+		`CREATE TABLE IF NOT EXISTS books (
 			id SERIAL PRIMARY KEY,
 			title TEXT NOT NULL,
 			author TEXT NOT NULL,
@@ -46,7 +46,7 @@ func Init() {
 			created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 			updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 		);`,
-		`CREATE TABLE reviews (
+		`CREATE TABLE IF NOT EXISTS reviews (
 			id SERIAL PRIMARY KEY,
 			user_id INTEGER NOT NULL REFERENCES users(id),
 			book_id INTEGER NOT NULL REFERENCES books(id),
