@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"irfanabduhu/bookstore/utils"
 	"net/http"
+	"os"
 	"testing"
 )
 
@@ -39,4 +40,44 @@ func TestAdminLogin(t *testing.T) {
 		)
 		utils.CheckResponseCode(t, test.expectedStatusCode, response.Code)
 	}
+}
+
+func TestUserSignUp(t *testing.T) {
+	user := map[string]string{
+		"name": "Irfanul Hoque",
+		"username": "irfan",
+		"email": "irfan@example.com",
+		"password": "123456",
+		"plan": "basic",
+	}
+	jsonPayload, _ := json.Marshal(user)
+	response := utils.GetResponse(
+		"POST",
+		"http://localhost:8080/api/v1/users/signup",
+		"",
+		bytes.NewBuffer(jsonPayload),
+	)
+	utils.CheckResponseCode(t, http.StatusCreated, response.Code)
+}
+
+func TestUserSignIn(t *testing.T) {
+	credentials := map[string]string{
+		"username": "irfan",
+		"password": "123456",
+	}
+	jsonPayload, _ := json.Marshal(credentials)
+	response := utils.GetResponse(
+		"POST",
+		"http://localhost:8080/api/v1/users/signin",
+		"",
+		bytes.NewBuffer(jsonPayload),
+	)
+	utils.CheckResponseCode(t, http.StatusOK, response.Code)
+}
+
+func TestMain(m *testing.M) {
+	utils.InitDB()
+	code := m.Run()
+	utils.TearDown()
+    os.Exit(code)
 }

@@ -7,6 +7,7 @@ import (
 	"irfanabduhu/bookstore/config"
 	"irfanabduhu/bookstore/review"
 	"irfanabduhu/bookstore/user"
+	"log"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -17,7 +18,7 @@ import (
 )
 
 func InitDB() {
-	var queries []string = []string {
+	var queries []string = []string{
 		`CREATE TABLE IF NOT EXISTS users (
 			id SERIAL PRIMARY KEY,
 			name TEXT NOT NULL,
@@ -28,14 +29,6 @@ func InitDB() {
 			plan VARCHAR(10) DEFAULT 'basic' CHECK (plan IN ('basic', 'premium')),
 			created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 			updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-		);`,
-		`INSERT INTO users (name, username, email, password, role)
-		VALUES (
-			'admin',
-			'admin',
-			'admin@example.com',
-			'$2a$10$EOsoyng3jonP9XHiZ3uw5egQAO7Ae0v9Ty75mA0tCU6Z8T9Xf2nj6', -- hash for 'abracadabra' with defaultCost
-			'admin'
 		);`,
 		`CREATE TABLE IF NOT EXISTS books (
 			id SERIAL PRIMARY KEY,
@@ -57,19 +50,40 @@ func InitDB() {
 			created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 			updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 		);`,
+		`INSERT INTO users (name, username, email, password, role)
+		VALUES (
+			'admin',
+			'admin',
+			'admin@example.com',
+			'$2a$10$EOsoyng3jonP9XHiZ3uw5egQAO7Ae0v9Ty75mA0tCU6Z8T9Xf2nj6', -- hash for 'abracadabra' with defaultCost
+			'admin'
+		);`,
 	}
 
 	db := config.ConnectDB()
 	for _, query := range queries {
-		db.Exec(query)
+		_, err := db.Exec(query)
+		if err != nil {
+			log.Print(err)
+		}
 	}
 }
 
 func TearDown() {
 	db := config.ConnectDB()
-	db.Exec(`DROP TABLE IF EXISTS users`)
-	db.Exec(`DROP TABLE IF EXISTS books`)
-	db.Exec(`DROP TABLE IF EXISTS reviews`)
+	queries := []string{
+		`DROP TABLE IF EXISTS users CASCADE;`,
+		`DROP TABLE IF EXISTS books CASCADE;`,
+		`DROP TABLE IF EXISTS reviews CASCADE;`,
+	}
+	for _, query := range queries {
+		_, err := db.Exec(query)
+		if err != nil {
+			log.Printf("failed cleaning up db: %v", err.Error())
+		} else {
+			log.Printf("cleaned up table.")
+		}
+	}
 }
 
 func ExecuteRequest(req *http.Request, s *config.Server) *httptest.ResponseRecorder {
@@ -91,6 +105,9 @@ func GetResponse(method, url string, token string, body io.Reader) *httptest.Res
 	req, _ := http.NewRequest(method, url, body)
 	if token != "" {
 		req.Header.Set("Authorization", "Bearer "+token)
+	}
+	if body != nil {
+		req.Header.Set("Content-Type", "application/json")
 	}
 	response := ExecuteRequest(req, s)
 	return response

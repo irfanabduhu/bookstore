@@ -11,7 +11,7 @@ import (
 
 const (
 	host     = "localhost"
-	devPort     = 5432
+	devPort  = 5432
 	testPort = 5433
 	username = "irfan"
 	password = "123456"
@@ -36,7 +36,7 @@ func ConnectDB() *sql.DB {
 		log.Fatal("Invalid or missing APP_ENV environment variable")
 	}
 	psqlInfo := "host=" + host + " port=" + strconv.Itoa(port) + " user=" + username + " password=" + password + " dbname=" + dbname + " sslmode=disable"
-	
+
 	db, err := sql.Open("postgres", psqlInfo)
 	if err != nil {
 		log.Fatal(err)
